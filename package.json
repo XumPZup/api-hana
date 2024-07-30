@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@sap/hana-client": "^2.21.28"
+  }
+}
