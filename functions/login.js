@@ -8,6 +8,8 @@ exports.handler = async function(event, context) {
     };
   }
 
+  const conn = hana.createConnection();
+  
   try {
     const data = JSON.parse(event.body);
 
@@ -16,8 +18,6 @@ exports.handler = async function(event, context) {
       uid: data.uid,
       pwd: data.pwd,
     };
-
-    const conn = hana.createConnection();
 
     const connectToHana = () => {
       return new Promise((resolve, reject) => {
