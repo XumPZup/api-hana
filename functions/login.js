@@ -17,12 +17,17 @@ exports.handler = async function(event, context) {
       pwd: data.pwd,
     };
 
-    // Connect to SAP HANA
     const conn = hana.createConnection();
 
     const connectToHana = () => {
       return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          conn.disconnect();
+          reject(new Error('Connection attempt timed out'));
+        }, 9000); // Timeout slightly less than Netlify's 10s limit
+
         conn.connect(connParams, (err) => {
+          clearTimeout(timeout);
           if (err) {
             reject(err);
           } else {
