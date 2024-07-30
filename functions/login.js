@@ -15,8 +15,8 @@ exports.handler = async function(event, context) {
 
     const connParams = {
       serverNode: data.server + ":" + data.port,
-      uid: data.uid,
-      pwd: data.pwd,
+      UID: data.uid,
+      PWD: data.pwd,
     };
 
     const connectToHana = () => {
