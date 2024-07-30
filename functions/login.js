@@ -17,6 +17,7 @@ exports.handler = async function(event, context) {
       serverNode: data.server + ":" + data.port,
       UID: data.uid,
       PWD: data.pwd,
+      sslValidateCertificate: 'false'
     };
 
     const connectToHana = () => {
